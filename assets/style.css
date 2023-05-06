@@ -1,49 +1,53 @@
-*{
+* {
     box-sizing: border-box;
     font-family: "Audiowide", sans-serif;
 }
 
 @import url("https://fonts.googleapis.com/css?family=Audiowide");
 @import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,900;1,1000&display=swap');
-:root{
+
+:root {
     --TextGreen: #3BB143;
     --colorBlue: #1c375b;
     --colorLightBlue: #8ba1bb;
     --colorwhite: #f5f5f5;
-    --colorLightRed: #d2544a;	
+    --colorLightRed: #d2544a;
     --colorDarkRed: #c1291b;
     --oldComoColor: #b49e72;
 }
 
 #btn-test-1,
 #btn-test-2,
-#btn-test-3{
+#btn-test-3 {
+    z-index: 1;
     position: absolute;
     height: 100px;
     width: 100px;
     background-color: #c1291b;
-    right: 1200px;
+    left: 20%;
     top: 300px;
-    text-align: center  ;
+    text-align: center;
     cursor: pointer;
     border-radius: 15px;
 }
-#btn-test-2{
+
+#btn-test-2 {
     top: 400px;
 }
-#btn-test-3{
+
+#btn-test-3 {
     top: 500px;
 }
 
-body{
+body {
     display: flex;
     flex-direction: column;
     align-items: center;
     background-image: url(./image/DarkSkynight.png);
-    background-size:cover;
+    background-size: cover;
 }
 
-#quizinfo{
+#quizinfo {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -55,39 +59,49 @@ body{
     border-radius: 25px;
     box-shadow: 0px 0px 20px var(--colorLightRed);
     z-index: 1;
+    
 }
-h1{
+
+h1 {
     font-family: "Audiowide", sans-serif;
     font-size: 30pt;
     line-height: 1px;
 }
-#gameTimer{
+
+#gameTimer {
     margin: 5px;
-    font-size:25px;
+    font-size: 25px;
     font-family: "Audiowide", sans-serif;
 }
 
-#gameArea{
+#gameArea {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     background-color: black;
     margin: 10px;
     padding: 15px 30px;
     min-width: 900px;
     min-height: 550px;
-    box-shadow: 0px 0px 600px #043927;
+    box-shadow: 0px 0px 100px #043927;
     color: var(--TextGreen);
     border: solid 2pt var(--TextGreen);
     /* border-radius: 25px; */
+    border-image: url(./image/oldPcFrame-darker.png);
+    border-image-slice: 287 287 287 275;
+    border-image-width: 40px 40px 40px 40px;
+    border-image-outset: 0px 0px 0px 0px;
+    border-image-repeat: stretch stretch;
+    border-style: solid;
     /* border-image: radial-gradient(circle, rgba(180,158,114,1) 80%, rgba(92,82,62,1) 90%, rgba(45,40,30,1) 100%) 1;
-    border-width: 12px;
     border-style: solid; */
 
 }
-#question{
+
+#question {
     font-size: 25pt;
     margin-top: 3%;
     margin-bottom: 3%;
@@ -95,8 +109,11 @@ h1{
     border-bottom: dashed var(--TextGreen);
 }
 
+p{
+    font-size: 14pt;
+}
 
-button{
+button {
     font-size: 20pt;
     text-align: left;
     padding: 10px 15px;
@@ -112,8 +129,9 @@ button{
     cursor: pointer;
     text-transform: uppercase;
 }
+
 button:hover,
-button:active{
+button:active {
     border-top: solid .1pt var(--TextGreen);
     border-bottom: solid .1pt var(--TextGreen);
     border-left: none;

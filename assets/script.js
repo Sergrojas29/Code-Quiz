@@ -4,26 +4,24 @@ const Login = document.querySelector('#login');
 const testbutton = document.querySelector('#quizinfo');
 
 
-// debugging 
-// const btn1 = document.querySelector('#btn-test-1')
-// const btn2 = document.querySelector('#btn-test-2')
-// const btn3 = document.querySelector('#btn-test-3')
+//? debugging 
+const btn1 = document.querySelector('#btn-test-1')
+const btn2 = document.querySelector('#btn-test-2')
+const btn3 = document.querySelector('#btn-test-3')
 
-// btn1.addEventListener('click', CreateQnA)
-// btn2.addEventListener('click', chooseAnswer)
-// btn3.addEventListener('click', renderRestartScreen)
+btn1.addEventListener('click', CreateQnA)
+btn2.addEventListener('click', YourScoreScreen)
+btn3.addEventListener('click', renderRestartScreen)
+
+//? debugging 
 
 
 
-function testdebug() {    
-}
-
-// debugging 
 
 //Login Begins the Qusetion
 
 
-Login.addEventListener('click', delaylogin)
+Login.addEventListener('click', delaylogin);
 
 function delaylogin() {
     clear()
@@ -198,7 +196,7 @@ function CreateQnA() {
         qcount++
     }
     else if (qcount >= questionArray.length) {
-        renderRestartScreen()
+        YourScoreScreen()
         stoptimer()
         qcount = 0
     }
@@ -224,8 +222,70 @@ function chooseAnswer() {
 
 
 
+function YourScoreScreen(){
+    clear()
+    var highScoretitle = document.createElement('h1')
+    var renderScore = document.createElement('h2')
+    var enterScoreBtn = document.createElement('button')
+
+    highScoretitle.textContent = 'YOU SCORED:'    
+    Area.appendChild(highScoretitle)
+
+    renderScore.textContent = timerLeft.textContent    
+    Area.appendChild(renderScore)
+    
+    
+    enterScoreBtn.textContent = 'Enter Score'
+    enterScoreBtn.setAttribute('id', 'enterHS')
+    Area.appendChild(enterScoreBtn)
+
+    document.querySelector('#enterHS').addEventListener('click', RenderHSscreen)
+}
 
 
+var highscoreholders = ['SRA', 'LYL', 'TEST']
+var highScoreholderScore = [180, 156 , 56]
+
+function RenderHSscreen(){
+    clear()
+    var highScoretitle = document.createElement('h1')
+    var createScoreArea = document.createElement('section')
+
+
+    highScoretitle.setAttribute('id', 'TitleHighScore')
+    highScoretitle.textContent = 'Highscore'    
+    Area.appendChild(highScoretitle)
+    createScoreArea.setAttribute('id', 'scoreArea')
+    Area.appendChild(createScoreArea)
+
+    const scoreArea = document.querySelector('#scoreArea')
+
+    for (let i = 0; i < 3 ; i++) {
+        var inputIntial = document.createElement('span')
+        var highformat = document.createElement('p')   
+        var inputhigh = document.createElement('span')                
+        
+        inputIntial.setAttribute('class','intialspan')
+        inputIntial.textContent = highscoreholders[i]
+
+        scoreArea.appendChild(inputIntial)
+        
+        highformat.setAttribute('id','hs')
+        highformat.textContent = '. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .'
+
+        scoreArea.appendChild(highformat)
+
+        inputhigh.setAttribute('id','Highscore')
+        inputhigh.textContent = highScoreholderScore[i]
+
+        scoreArea.appendChild(inputhigh)
+    }  
+
+
+}
+
+console.log(highscoreholders[0])
+console.log(highScoreholderScore[0])
 
 
 

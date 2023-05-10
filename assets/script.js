@@ -11,7 +11,7 @@ const Login = document.querySelector('#login');
 
 // btn1.addEventListener('click', CreateQnA)
 // btn2.addEventListener('click', YourScoreScreen)
-// btn3.addEventListener('click', renderRestartScreen)
+// btn3.addEventListener('click', RenderHSscreen)
 
 //? debugging 
 
@@ -162,11 +162,11 @@ function renderRestartScreen() {
 
 
 // CreateQnA will restart the questions once all question have been asked ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-var questionArray = ['What is it like to be a Muffin?', "Why does Muffin stink?", 'how much does Muffin stink?', 'Why does luna love Muffin more?', 'What kind of potato would Muffin like to be?']
-var answerArray = [['Its Stinky to be a little Muffin', 'She kinda Smells', 'is small', 'All of the Above'],
-['Because she stinky', 'She is Penguin', 'she tiny and smelly', 'funktasitc'], ['100%', '90%', '80%', '70%'],
-['Because Muffin Smeels like beef', 'Because Muffin Smeels like chicken', 'Because Muffin Smeels like Papya', 'Because Muffin Smeels like Poop'], ['Mashed Potato', ' Baked Potato', 'Wedge Potato', 'Tatertot']]
-var answerKey = [4, 2, 1, 2, 2]
+var questionArray = ['What is the correct Strict equality syntax?', "What will be console.log(2 > (0 * 1))", 'What are arrays surrounded by', 'What is a let variable', 'How do you clear all of the locate storage']
+var answerArray = [['===', '==', '!==', 'Strictequals'],
+['false', 'null', '2 > (0 * 1)', 'true'], ['Round brackets or parentheses ()', 'Square brackets or brackets[]', 'Curly brackets or braces {}', 'Angle brackets or chevrons ⟨⟩'],
+['declare a block-scoped local var', 'declare a function/globally-scoped var', 'declare creates block-scoped constants', 'LETs you be the one'], ['localStorage.getItem()', ' localStorage.clear()', 'localStorage.setItem()', 'localStorage.removeItem()']]
+var answerKey = [1, 4, 2, 1, 2]
 var qcount = 0
 
 function startCreateQna() {
@@ -222,6 +222,7 @@ function chooseAnswer() {
 
 
 
+
 function YourScoreScreen() {
     clear()
     var highScoretitle = document.createElement('h1')
@@ -247,10 +248,40 @@ function YourScoreScreen() {
 
     document.querySelector('#enterHS').addEventListener('click', RenderHSscreen)
 }
-
-
 var highscoreholders = []
 var highScoreholderScore = []
+
+function getOldScores(){
+    var check = localStorage.getItem('nameHS')
+
+    if(check == null){       
+    }
+    else if(check != null){
+        var oldnames = localStorage.getItem('nameHS')
+        var oldscores = localStorage.getItem('scoreHS')
+        
+        highscoreholders = oldnames.split(',')
+        highScoreholderScore = oldscores.split(',')
+    }
+}
+
+getOldScores()
+
+
+
+function saveHighScoretolocal() {
+    //* Add save Score data 
+    localStorage.setItem('nameHS', highscoreholders)
+    localStorage.setItem('scoreHS', highScoreholderScore)
+}
+function deleteHighScoretolocal() {
+    //* Add save Score data 
+    localStorage.clear()
+    highscoreholders = []
+    highScoreholderScore = []
+}
+
+
 
 function RenderHSscreen() {
     const inputHS = document.querySelector('input')
@@ -270,9 +301,10 @@ function RenderHSscreen() {
 
     }
     else {
-
+        //* if no error on input score page
         highscoreholders.push(playerInitials)
         highScoreholderScore.push(Pscore)
+
 
         clear()
 
@@ -310,6 +342,7 @@ function RenderHSscreen() {
                 scoreArea.appendChild(inputhigh)
 
             }
+            saveHighScoretolocal()
         }
         else {
             highscoreholders.shift()
@@ -336,6 +369,7 @@ function RenderHSscreen() {
 
 
             }
+            saveHighScoretolocal()
         }
         var renderStartButton = document.createElement('button')
         renderStartButton.setAttribute('id', 'startbutton')
@@ -348,26 +382,95 @@ function RenderHSscreen() {
 
 }
 
+function renderHS2() {
+    clear()
+    var highScoretitle = document.createElement('h1')
+    var createScoreArea = document.createElement('section')
+    var errorNoScore = document.createElement('h2')
 
 
+    highScoretitle.setAttribute('id', 'TitleHighScore')
+    highScoretitle.textContent = 'Highscores'
+    Area.appendChild(highScoretitle)
+    createScoreArea.setAttribute('id', 'scoreArea')
+    Area.appendChild(createScoreArea)
+    const scoreArea = document.querySelector('#scoreArea')
+    if (highscoreholders.length < 4) {
+        for (let i = 0; i < highscoreholders.length; i++) {
+            var inputIntial = document.createElement('span')
+            var highformat = document.createElement('p')
+            var inputhigh = document.createElement('span')
 
-var tab = document.querySelector(".tab");
+            inputIntial.setAttribute('class', 'intialspan')
+            inputIntial.textContent = highscoreholders[i]
+
+            scoreArea.appendChild(inputIntial)
+
+            highformat.setAttribute('id', 'hs')
+            highformat.textContent = '. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .'
+
+            scoreArea.appendChild(highformat)
+
+            inputhigh.setAttribute('id', 'Highscore')
+            inputhigh.textContent = highScoreholderScore[i]
+
+
+            scoreArea.appendChild(inputhigh)
+
+        }
+
+
+    }
+    if (highscoreholders.length == 0) {
+        errorNoScore.textContent = "No HighScores"
+        Area.appendChild(errorNoScore)
+
+    }
+    var renderStartButton = document.createElement('button')
+    renderStartButton.setAttribute('id', 'startbutton')
+    renderStartButton.setAttribute('style', 'min-width: 100px; position: absolute; top: 75%;')
+    renderStartButton.textContent = "Try Again"
+    Area.appendChild(renderStartButton);
+    var btnStart = document.querySelector("#startbutton")
+    return btnStart.addEventListener('click', startCreateQna)
+}
+
+
 var btnArea = document.querySelector("#coolbtn");
 var tabarrow = document.querySelector(".rotate");
+var tabBtn1 = document.querySelector('.tabBtn1');
+var tabBtn2 = document.querySelector('.tabBtn2');
 
-tab.addEventListener("click", function () {
-  check = btnArea.getAttribute("style", "right");
-  console.log(check == null)
-  if (check == "right: -30px;" | check == null) {
-    btnArea.setAttribute("style", "right: -150px;");
-    tabarrow.setAttribute('style','transform: rotate(180deg);')
-   console.log(check)
-  } 
-  else {
-    btnArea.setAttribute("style", "right: -30px;");
-    tabarrow.setAttribute('style','transform: rotate(0deg);')
-  }
-});
+
+
+
+function expandTab() {
+    check = btnArea.getAttribute("style", "right");
+    if (check == "right: -30px;" | check == null) {
+        btnArea.setAttribute("style", "right: -150px;");
+        tabarrow.setAttribute('style', 'transform: rotate(180deg);')
+    }
+    else {
+        btnArea.setAttribute("style", "right: -30px;");
+        tabarrow.setAttribute('style', 'transform: rotate(0deg);')
+    }
+}
+
+function btnflick(delay) {
+    tabBtn1.children[0].setAttribute('src', "./assets/image/buttoncover invert.png")
+    tabBtn1.setAttribute('style', "color:grey;")
+
+    setTimeout(function () {
+        tabBtn1.children[0].setAttribute('src', "./assets/image/buttoncover.png")
+        tabBtn1.setAttribute('style', "color:white;")
+    }, delay)
+}
+
+
+function tabHighscorerender() {
+    renderHS2()
+    btnflick(200)
+}
 
 
 

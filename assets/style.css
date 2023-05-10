@@ -1,6 +1,7 @@
 * {
     box-sizing: border-box;
     font-family: "Audiowide", sans-serif;
+    outline: none;
 }
 
 @import url("https://fonts.googleapis.com/css?family=Audiowide");
@@ -99,11 +100,11 @@ h1 {
     scale: 1;
     position: absolute;
     background-size: cover;
-    opacity: .3;
+    opacity: .2;
     user-select: none;
     border: solid 1pt white;
     z-index: 3;
-    top: 186px;
+    top: 176px;
     height: 550px;
     width: 900px;
     transition:
@@ -240,6 +241,9 @@ button:active {
 }
 
 .btnarea {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
     background-color: black;
     border-bottom-right-radius: 10px;
     border: solid 2pt var(--TextGreen);
@@ -247,14 +251,43 @@ button:active {
     width: 80%;
 }
 
+.TabBTN{
+    display: flex;
+    color: white;
+    font-style: none;
+    text-decoration: none;
+    background-color: var(--colorDarkRed);
+    align-self: center;
+    align-items: center;
+    text-align: center;
+    font-size: smaller;
+    height: 100px;
+    width: 100px;
+    position: relative;
+
+
+}
+
+
+
+.btncover{
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    opacity: .25;
+}
+
+
 .tab {
     display: flex;
+    color: var(--TextGreen);
     background-color: var(--colorBlue);
     height: 30%;
     width: 20%;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     transform: all 1s;
+    cursor: pointer;
     
 }
 
@@ -262,4 +295,19 @@ button:active {
     align-self: center;
     transform: all 1s;
     margin: 0 auto;
+    background: none;
+    height: fit-content;
+    min-width: fit-content;
+    font-size: 16pt;
+    text-align: center;
+    padding: 0;    
+    text-transform: uppercase;
+    border: none;
+
+}
+.rotate:hover{
+    border-top: none;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
 }

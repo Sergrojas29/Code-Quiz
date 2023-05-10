@@ -20,15 +20,18 @@
         <h1>JavaScript Pop Quiz</h1>
         <div id="gameTimer"> Time left: <span id="timerLeft">000</span>s</div>
     </section>
-    <!-- <img class="scanline" alt="scanlines" inert> -->
+    <img class="scanline" alt="scanlines" inert>
     <section class='buttoncontain'>
         <aside id="coolbtn">
-            <div class="btnarea"></div>
-            <div class="tab"> <p class="rotate">></p> </div>
-          </aside> 
+            <div class="btnarea">
+                <a href="#" class="TabBTN tabBtn1" onclick="tabHighscorerender()"  id="btnHigh">View Highscore <img inert class="btncover"  src="./assets/image/buttoncover.png" alt=""></a>
+                <a href="#" class="TabBTN tabBtn2" id="btnclearHighscore" onclick="deleteHighScoretolocal()">Clear Highscore <img inert class="btncover"  src="./assets/image/buttoncover.png" alt=""></a>
+            </div>
+            <div class="tab" onclick='expandTab()'> <a class="rotate">></a> </div>
+        </aside> 
 
         <section id="gameArea">
-            <h2 id="login">...Login...</h2>
+            <h2 id="login">Login.</h2>
         </section>
     </section>
     </section>

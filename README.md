@@ -1,6 +1,8 @@
 # ChallengeWeek4 - 04 Web APIs: Code Quiz
 Web APIs Challenge: Code Quiz
 
+https://sergrojas29.github.io/ChallengeWeek4/
+
 ## User Story
 
 ```
@@ -24,6 +26,11 @@ THEN the game is over
 WHEN the game is over
 THEN I can save my initials and my score
 ```
+
+
+## Troubleshooting 
+
+If timer is goes past 0 then the time and end game breaks -fixed on rev3
 
 
 ## Usage

@@ -113,7 +113,7 @@ function timer() {
         if (newscore > 0) {
             timerLeft.textContent = --newscore
         }
-        if (newscore == 0) {
+        if (newscore <= 0) {
             clearInterval(timerScore)
             timerScore = null
             YourScoreScreen()
